@@ -1,5 +1,8 @@
 <script context="module">
 
+import ClickyCard from '../../components/clicky-card.svelte'
+import GridList from '../../components/grid-list.svelte'
+
 export const prerender = true;
 	
 	// see https://kit.svelte.dev/docs#loading
@@ -23,9 +26,6 @@ export const prerender = true;
 </script>
 
 <script>
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
-	
 	export let posts;
     console.log(posts)
 </script>
@@ -36,10 +36,15 @@ export const prerender = true;
 
 <div>
 	<h1>Blog</h1>
-    <ul>
+	<GridList>
         {#each posts as post}
-        <li><a href="/blog/{post.slug}">{post.title}</a></li>
+		<li>
+			<ClickyCard body={post.title} link={`/blog/${post.slug}`} />
+		</li>
         {/each}
-    </ul>
-
+	</GridList>
 </div>
+
+<style>
+	
+</style>

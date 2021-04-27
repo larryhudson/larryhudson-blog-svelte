@@ -1,6 +1,23 @@
+<script context="module">
+	export async function load({ page }) {
+		return {
+			props: {
+				currentUrl: page.path
+			}
+		}
+	}
+</script>
+
+<script>
+	import '../app.css'
+	import Navigation from '../components/navigation.svelte'
+
+	export let currentUrl
+</script>
+
 <header>
-    <h1>Larry Hudson</h1>
-    <a href="/blog">Blog</a>
+	<h1>Larry Hudson</h1>
+	<Navigation currentUrl={currentUrl} />
 </header>
 
 <main>
